@@ -6,3 +6,5 @@ from flask_wtf.file import FileField
 
 class UserForm (FlaskForm):
     profile_pic = FileField('Profile Picture')
+
+

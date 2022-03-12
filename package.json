@@ -1,0 +1,24 @@
+{
+  "name": "package.json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Michael-Musili/PitchApp2.git"
+  },
+  "author": "Michael Musili michaelmuttuku@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Michael-Musili/PitchApp2/issues"
+  },
+  "homepage": "https://github.com/Michael-Musili/PitchApp2#readme",
+  "keywords": [],
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "request": "^2.88.2"
+  }
+}
