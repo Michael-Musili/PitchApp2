@@ -1,64 +1,71 @@
-{% macro displayCategoryList(category_list) %} 
-    {% for category in category_list %}
-    
-        <li><a href="{{url_for('.category',id=category.id)}}">
-            {{category.name|upper}}
-        </a>
-        </li>
-    {% endfor %} 
-{% endmacro %}
+{% macro displayPitches(pitches) %}
 
-{% macro displayAllPitches(pitches) %}
+
+<div class="pitches">
     {% for pitch in pitches %}
-        <div class="row my-pitches">
-            <div class="col-md-12">
-                <h4>{{pitch.user.username}}</h4>
-                <p>{{pitch.content}}</p>
-                <p><a class="btn btn-info" href="{{url_for('.post_comment',id=pitch.id)}}"> Add your comment</a></p>
-            </div>
-        </div>
-    {% endfor %}
-{% endmacro %}
+    <div class="pitch">
+        <h4 class="pitch__username">@{{pitch.user.username}} </h4>
+        <p class="pitch__text"> {{pitch.text}} </p>
 
-{% macro displayPitches(pitch_list) %} 
-{% for pitches in pitch_list %}
-<div class="col-md-12">
-    <div class="well">
-        <div class="row">
-            <p>{{pitches.name|upper}}</p>
-            </a>
-            <div class="col-md-10 col-sm-12">
-                <h3>{{pitches.content}}</h3>
-                <h4>
-                    <span>
-                        <a href=" {{url_for('.view_pitch',id=pitches.id)}}">Read Comments</a>
-                    </span>
-                </h4>
+        <a class="hashtag" href="{{url_for('main.category', category=pitch.category)}} ">
+            #{{pitch.category}} </a>
 
-                <a href=" {{url_for('.post_comment',id=pitches.id)}}">
-                    <h4>COMMENT</h4>
-                </a>
-            </div>
+        <div class="pitch__votes">
+            <form action="/upvote/{{pitch.id}}" method="POST">
+                <span> {{pitch.upvotes|length}} </span>
+                <button type="submit" class="btn--upvote">
+                    <img class="svg"
+                        src="{{url_for('static', filename='img/up-svgrepo-com.svg')}}">
+                </button>
+            </form>
+            <form action="/downvote/{{pitch.id}}" method="POST">
+                <span>{{pitch.downvotes| length}} </span>
+                <button type="submit" class="btn--upvote">
+                    <img class="svg"
+                        src="{{url_for('static', filename='img/arrow-download-svgrepo-com.svg')}}">
+                </button>
+            </form>
         </div>
+
+
+        <button class="collapsible">{{pitch.comments | length}} Comments</button>
+
+        <div class="content">
+            <form action="/create-comment/{{pitch.id}}" method="POST">
+                <input required type="text" name="text" placeholder="Add comment">
+                <button type="submit" class="btn">
+                    Add
+                </button>
+
+            </form>
+            {% for comment in pitch.comments %}
+            <p>{{comment.user.username}}: {{comment.text}} </p>
+
+            {% endfor %}
+        </div>
+
+
     </div>
+    {% endfor %}
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+
 </div>
-<!-- </HISTORY> .. -->
 
-{% endfor %} 
-{% endmacro %} 
 
-{% macro displaySpecificPitch(specific_pitch_list) %} 
-{% for comment in specific_pitch_list %}
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-    <hr>
-    <p style="color:rgb(138, 37, 121)">{{comment.opinion}} </p>
-    <p style="text-align:right; color:#d0d1cb; font-size:10px;">{{comment.time_posted.strftime('%Y/%m/%d || %r') }}</p>
-</div>
-{% endfor %} 
-{% endmacro %}
-
-{% macro displayCategory(category_list) %} 
-{% for category in category_list%}
-<a class="dropdown-item" href="{{url_for('.category',id=category.id)}}">{{category.name|upper}} </a>
-{% endfor %} 
 {% endmacro %}
