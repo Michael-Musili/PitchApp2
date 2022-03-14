@@ -3,7 +3,7 @@ import os
 
 class Config:
     SECRET_KEY = 'mike254'
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringaaccess:musili@localhost/musili'
 
 
