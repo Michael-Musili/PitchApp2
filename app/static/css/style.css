@@ -19,7 +19,7 @@ body {
 
 :root {
   --color-primary: hsl(240, 89%, 7%);
-  --color-secondary: green;
+  --color-secondary: blue;
   --color-white: hsl(0, 0%, 100%);
   --color-grey: #f8f8f8;
 }
@@ -67,7 +67,7 @@ a:active {
   font-size: 1.8rem;
   border: none;
   color: white;
-  background-color: green;
+  background-color: blue;
 }
 
 .heading-3 {
@@ -92,7 +92,7 @@ a:active {
 .logo_name a {
   font-size: 3.5rem;
   font-family: "Courier New", Courier, monospace;
-  color: green;
+  color: blue;
 }
 
 .navbar-item {
