@@ -20,10 +20,8 @@ class Pitch (db.Model):
     text = db.Column(db.String(3000))
     category = db.Column(db.String(100), nullable=False)
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    author = db.Column(db.Integer, db.ForeignKey(
-        'user.id', ondelete='CASCADE'), nullable=False)
-    comments = db.relationship(
-        'Comment', backref='pitch', passive_deletes=True)
+    author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
+    comments = db.relationship('Comment', backref='pitch', passive_deletes=True)
 
     upvotes = db.relationship('Upvote', backref='pitch', passive_deletes=True)
     downvotes = db.relationship(

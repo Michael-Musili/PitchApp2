@@ -18,10 +18,11 @@ login_manager.login_view = 'auth.login'
 
 def create_app(config_name):
     app = Flask(__name__)
+    app.config.from_object(config_options[config_name])
+
     mail.init_app(app)
     login_manager.init_app(app)
     db.init_app(app)
-    app.config.from_object(config_options[config_name])
 
     @login_manager.user_loader
     def load_user(user_id):
@@ -36,7 +37,6 @@ def create_app(config_name):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
     
     return app
