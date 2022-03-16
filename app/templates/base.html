@@ -6,15 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href=" {{url_for('static', filename='css/style.css')}} ">
-    <title>Pitches</title>
+    <title>Best Pitch</title>
 </head>
 
 <body>
     <div id="container">
         <header class="header">
-            <h1 class="logo_name">
-                <a href="{{url_for('main.index')}}">Pitches</a>
-            </h1>
+            
             <nav class="navbar">
                 <a href="{{ url_for('main.index') }}" class="navbar-item">
                     Home
@@ -47,7 +45,26 @@
             </nav>
 
         </header>
+        <div>
+
+            <h1 class="logo" style="background-color: blue; background-size: cover; text-align: center;font-size: 3.5rem;
+             font-family:'Courier New', Courier, monospace ;color: white;;">
+                Pitches Review
+            </h1> 
+            
+            <h2 style="text-align: center;background-color:  #f8f8f8; padding-top:5px ;">Get pitche Ideas and post yours pitches let poeple and rate you</h2>
+        
+             <h2 style="text-align: center;background-color:  #f8f8f8; padding-top:5px ">Sign up to join <button ><a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                Join
+            </a></button></h2>
+             
+        </div>
+            
         <main class="main">
+
+
+    
+        
             {% block content %}
             {% endblock %}
 

@@ -91,8 +91,10 @@ a:active {
 
 .logo_name a {
   font-size: 3.5rem;
-  font-family: "Courier New", Courier, monospace;
-  color: blue;
+ 
+  color: white;
+
+  
 }
 
 .navbar-item {
@@ -113,6 +115,7 @@ a:active {
   row-gap: 5rem;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding-top: 70px;
 }
 
 .pitch {
@@ -122,6 +125,7 @@ a:active {
   border-radius: 8px;
 
   box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.2);
+
 }
 
 .pitch__username {
@@ -135,6 +139,7 @@ a:active {
   -webkit-line-clamp: 7;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  padding-top: 50px;
 }
 
 .hashtag {
@@ -164,7 +169,7 @@ a:active {
 }
 
 .collapsible {
-  background-color: green;
+  background-color: blue;
   color: white;
   cursor: pointer;
   padding: 18px;
